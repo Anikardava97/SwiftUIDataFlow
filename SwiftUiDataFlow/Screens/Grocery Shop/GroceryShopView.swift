@@ -1,0 +1,80 @@
+//
+//  GroceryShopView.swift
+//  SwiftUiDataFlow
+//
+//  Created by Ani's Mac on 09.12.23.
+//
+
+import SwiftUI
+
+struct GroceryShopView: View {
+    
+    // MARK: - Properties
+    
+    var backgroundColor = Color(red: 250/255, green: 250/255, blue: 250/255)
+    var accentColor =  Color(red: 35/255, green: 170/255, blue: 73/255)
+    
+    @StateObject var viewModel = GroceryShopViewModel()
+    
+    // MARK: - Body
+    
+    var body: some View {
+        
+        NavigationView {
+            VStack(spacing: 16) {
+                
+                List {
+                    Section {
+                        ForEach(viewModel.filteredProducts(for: .fruit)) { fruit in
+                            ProductRow(product: fruit)
+                        }
+                    } header: {
+                        Text("Fruits")
+                    }
+                    
+                    Section {
+                        ForEach(viewModel.filteredProducts(for: .vegetable)) { vegetable in
+                            ProductRow(product: vegetable)
+                        }
+                    } header: {
+                        Text("Vegetables")
+                    }
+                }
+                
+                Button {
+                    viewModel.applyDiscount()
+                } label: {
+                    DiscountButton(accentColor: accentColor)
+                }
+            }
+            
+            .navigationTitle("Grocery Shop")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(
+                trailing:
+                    NavigationLink(destination: {
+                        CartView(cartViewModel: CartViewModel(products: viewModel.products))
+                    }, label: {
+                        Image(systemName: "cart")
+                            .foregroundStyle(.black)
+                        
+                            .overlay(Circle()
+                                .fill(accentColor)
+                                .frame(width: 16, height: 16)
+                                .overlay(
+                                    Text("\(viewModel.totalCartItems)")
+                                        .font(.system(size: 10))
+                                        .fontWeight(.bold)
+                                        .foregroundStyle(.white))
+                                    .offset(x: 5, y:-8)
+                                     , alignment: .topTrailing)
+                    }).padding(.horizontal, 16)
+            )
+        }
+        .environmentObject(viewModel)
+    }
+}
+
+#Preview {
+    GroceryShopView()
+}
