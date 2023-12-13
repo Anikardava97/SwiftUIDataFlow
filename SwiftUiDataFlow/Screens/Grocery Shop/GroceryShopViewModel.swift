@@ -12,14 +12,13 @@ class GroceryShopViewModel: ObservableObject {
     // MARK: - Properties
     @Published var products = [Product]()
     private var tapCount = 0
-    var isCartView: Bool = false
+    private var isCartView: Bool = false
     
     var totalCartItems: Int {
         return products.reduce(0) { $0 + $1.selectedAmount }
     }
     
     // MARK: - Init
-    
     init() {
         self.products = productList.products
     }
@@ -43,6 +42,14 @@ class GroceryShopViewModel: ObservableObject {
             objectWillChange.send()
             product.selectedAmount -= 1
             product.stock += 1
+        }
+    }
+    
+    func systemName(for product: Product, isCartView: Bool) -> String {
+        if isCartView && product.selectedAmount <= 1 {
+            return "trash"
+        } else {
+            return "minus"
         }
     }
     

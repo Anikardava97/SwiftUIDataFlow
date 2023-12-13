@@ -10,9 +10,8 @@ import SwiftUI
 struct GroceryShopView: View {
     
     // MARK: - Properties
-    
-    var backgroundColor = Color(red: 250/255, green: 250/255, blue: 250/255)
-    var accentColor =  Color(red: 35/255, green: 170/255, blue: 73/255)
+    private var backgroundColor = Color(red: 250/255, green: 250/255, blue: 250/255)
+    private var accentColor =  Color(red: 35/255, green: 170/255, blue: 73/255)
     
     @StateObject var viewModel = GroceryShopViewModel()
     
@@ -55,19 +54,7 @@ struct GroceryShopView: View {
                     NavigationLink(destination: {
                         CartView(cartViewModel: CartViewModel(products: viewModel.products))
                     }, label: {
-                        Image(systemName: "cart")
-                            .foregroundStyle(.black)
-                        
-                            .overlay(Circle()
-                                .fill(accentColor)
-                                .frame(width: 16, height: 16)
-                                .overlay(
-                                    Text("\(viewModel.totalCartItems)")
-                                        .font(.system(size: 10))
-                                        .fontWeight(.bold)
-                                        .foregroundStyle(.white))
-                                    .offset(x: 5, y:-8)
-                                     , alignment: .topTrailing)
+                        CartImageView(accentColor: accentColor, text: "\(viewModel.totalCartItems)")
                     }).padding(.horizontal, 16)
             )
         }

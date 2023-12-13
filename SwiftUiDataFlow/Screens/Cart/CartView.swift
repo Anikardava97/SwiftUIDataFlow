@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CartView: View {
     // MARK: - Properties
-    
     var backgroundColor = Color(red: 250/255, green: 250/255, blue: 250/255)
     var accentColor =  Color(red: 35/255, green: 170/255, blue: 73/255)
     
@@ -25,27 +24,37 @@ struct CartView: View {
                 .font(.system(size: 16))
                 .fontWeight(.bold)
             
-            List {
-                ForEach(cartViewModel.products) { product in
-                    ProductRow(product: product, isCartView: true)
+            Spacer()
+            
+            if cartViewModel.products.isEmpty {
+                Image("emptyCart")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 200)
+                
+                Spacer()
+                
+            } else {
+                List {
+                    ForEach(cartViewModel.products) { product in
+                        ProductRow(product: product, isCartView: true)
+                    }
+                }
+                
+                Button {
+                    
+                } label: {
+                    Text("Total Price: $\(String(format: "%.1f", cartViewModel.totalPrice))")
+                        .foregroundStyle(.white)
+                        .font(.system(size: 16))
+                        .fontWeight(.bold)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 44)
+                        .background(accentColor)
+                        .cornerRadius(8)
+                        .padding(.horizontal, 16)
                 }
             }
-            Button {
-                print("123")
-            } label: {
-                Text("Total Price: $\(String(format: "%.1f", cartViewModel.totalPrice))")
-                    .foregroundStyle(.white)
-                    .font(.system(size: 16))
-                    .fontWeight(.bold)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 44)
-                    .background(accentColor)
-                    .cornerRadius(8)
-                    .padding(.horizontal, 16)
-            }
-            
-            .environmentObject(GroceryShopViewModel())
         }
     }
 }
-

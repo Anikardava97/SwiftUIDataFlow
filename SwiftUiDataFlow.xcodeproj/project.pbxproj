@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE322F372B292D6B00042F44 /* DecrementButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE322F362B292D6B00042F44 /* DecrementButton.swift */; };
 		EEAC6DF92B2566D800163649 /* SwiftUiDataFlowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAC6DF82B2566D800163649 /* SwiftUiDataFlowApp.swift */; };
 		EEAC6DFD2B2566DA00163649 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEAC6DFC2B2566DA00163649 /* Assets.xcassets */; };
 		EEAC6E002B2566DA00163649 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEAC6DFF2B2566DA00163649 /* Preview Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE322F362B292D6B00042F44 /* DecrementButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecrementButton.swift; sourceTree = "<group>"; };
 		EEAC6DF52B2566D800163649 /* SwiftUiDataFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUiDataFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEAC6DF82B2566D800163649 /* SwiftUiDataFlowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUiDataFlowApp.swift; sourceTree = "<group>"; };
 		EEAC6DFC2B2566DA00163649 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,8 +70,8 @@
 			isa = PBXGroup;
 			children = (
 				EEAC6DF82B2566D800163649 /* SwiftUiDataFlowApp.swift */,
-				EEAC6E0E2B25C7EF00163649 /* Model */,
 				EEBA4D1E2B26EBFD00DB714F /* Views */,
+				EEAC6E0E2B25C7EF00163649 /* Model */,
 				EEBA4D1D2B26EBDE00DB714F /* Screens */,
 				EEAC6DFC2B2566DA00163649 /* Assets.xcassets */,
 				EEAC6DFE2B2566DA00163649 /* Preview Content */,
@@ -124,9 +126,10 @@
 		EEBA4D1E2B26EBFD00DB714F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EEBA4D1B2B26EAB500DB714F /* DiscountButton.swift */,
 				EEBA4D222B26F74E00DB714F /* CartImageView.swift */,
+				EEBA4D1B2B26EAB500DB714F /* DiscountButton.swift */,
 				EEBA4D282B26FC5E00DB714F /* IncrementButton.swift */,
+				EE322F362B292D6B00042F44 /* DecrementButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			files = (
 				EEBA4D142B26D20F00DB714F /* CartView.swift in Sources */,
 				EEAC6E0B2B25C6FA00163649 /* GroceryShopViewModel.swift in Sources */,
+				EE322F372B292D6B00042F44 /* DecrementButton.swift in Sources */,
 				EEBA4D182B26D26C00DB714F /* CartViewModel.swift in Sources */,
 				EEAC6E0D2B25C7B400163649 /* GroceryModel.swift in Sources */,
 				EEBA4D1C2B26EAB500DB714F /* DiscountButton.swift in Sources */,

@@ -10,7 +10,7 @@ import SwiftUI
 struct ProductRow: View {
     
     @EnvironmentObject var viewModel: GroceryShopViewModel
-
+    
     @ObservedObject var product: Product
     
     var isCartView = false
@@ -39,36 +39,14 @@ struct ProductRow: View {
                 
                 HStack(spacing: 20) {
                     
-                    Button(action: {
-                        viewModel.decrementAmount(for: product)
-                    }) {
-                        Group {
-                            if isCartView && product.selectedAmount <= 1 {
-                                Image(systemName: "trash")
-                            } else {
-                                Image(systemName: "minus")
-                            }
-                        }
-                        .foregroundStyle(Color(red: 151/255, green: 152/255, blue: 153/255))
-                        .background(
-                            Circle()
-                                .stroke(Color(red: 241/255, green: 241/255, blue: 245/255))
-                                .fill(Color(red: 243/255, green: 245/255, blue: 247/255))
-                                .frame(width: 32, height: 32)
-                        )
-                    }
-                    .buttonStyle(BorderlessButtonStyle())
+                    DecrementButton(product: product, isCartView: isCartView)
                     
                     Text("\(product.selectedAmount)")
                         .font(.system(size: 16))
                         .fontWeight(.bold)
                         .frame(width: 24)
                     
-                    Button {
-                        viewModel.incrementAmount(for: product)
-                    } label: {
-                        IncrementButton()
-                    }
+                    IncrementButton(product: product)
                 }
             }
         }

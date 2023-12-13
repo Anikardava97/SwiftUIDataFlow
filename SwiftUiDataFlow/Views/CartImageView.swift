@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CartImageView: View {
     var accentColor: Color
-    var text: Text
+    var text: String
     
     var body: some View {
         Image(systemName: "cart")
@@ -19,7 +19,7 @@ struct CartImageView: View {
                 .fill(accentColor)
                 .frame(width: 16, height: 16)
                 .overlay(
-                    Text("text")
+                    Text(text)
                         .font(.system(size: 10))
                         .fontWeight(.bold)
                         .foregroundStyle(.white))
@@ -29,5 +29,5 @@ struct CartImageView: View {
 }
 
 #Preview {
-    CartImageView(accentColor: .white, text: Text("123"))
+    CartImageView(accentColor: .white, text: "123")
 }
